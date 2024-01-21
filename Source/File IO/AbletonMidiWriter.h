@@ -8,8 +8,11 @@
   ==============================================================================
 */
 
-#pragma once
+// KJSL: sorry quick hack
+#undef JUCE_MODAL_LOOPS_PERMITTED
+#define JUCE_MODAL_LOOPS_PERMITTED 1
 
+#pragma once
 #include "../Structures/Mode.h"
 
 static File abletonUserLibrary =
@@ -74,8 +77,8 @@ public:
 
         FileChooser chooser("Save Ableton Midi Map", intendedFile, "*.mid");
 
-        if (chooser.browseForFileToSave(true))
-            return writeTo(chooser.getResult().getParentDirectory(), chooser.getResult().getFileName());
+//        if (chooser.browseForFileToSave(true))
+//            return writeTo(chooser.getResult().getParentDirectory(), chooser.getResult().getFileName());
         
         return false;
     }

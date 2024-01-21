@@ -8,6 +8,7 @@
   ==============================================================================
 */
 
+#define JUCE_MODAL_LOOPS_PERMITTED  1
 #include "ReaperWriter.h"
 
 ReaperWriter::ReaperWriter(Mode* modeIn)

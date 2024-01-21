@@ -10,6 +10,10 @@
 
 #pragma once
 
+// KJSL: sorry quick hack
+#undef JUCE_MODAL_LOOPS_PERMITTED
+#define JUCE_MODAL_LOOPS_PERMITTED 1
+
 #include <JuceHeader.h>
 #include "../Components/LabelledComponent.h"
 #include "../../File IO/KbmWriter.h"
@@ -99,25 +103,25 @@ public:
 
         FileChooser chooser("Save KBM file...", initialDirectory, "*.kbm");
 
-        if (chooser.browseForFileToSave(true))
-        {
-            KbmWriter kbm = KbmWriter::fromModes(
-                &inputMode, &outputMode, mapper, 0, 127, -1,
-                refNoteSld->getValue(), refFreqEditor->getText().getDoubleValue()
-            );
-
-            if (kbm.writeTo(chooser.getResult()))
-            {
-                success = true;
-                mappingNode.setProperty(IDs::tuningRootNote, refNoteSld->getValue(), nullptr);
-                mappingNode.setProperty(IDs::tuningRootFreq, refFreqEditor->getText().getDoubleValue(), nullptr);
-                mappingNode.setProperty(IDs::kbmFileLocation, chooser.getResult().getParentDirectory().getFullPathName(), nullptr);
-            }
-        }
+//        if (chooser.browseForFileToSave(true))
+//        {
+//            KbmWriter kbm = KbmWriter::fromModes(
+//                &inputMode, &outputMode, mapper, 0, 127, -1,
+//                refNoteSld->getValue(), refFreqEditor->getText().getDoubleValue()
+//            );
+//
+//            if (kbm.writeTo(chooser.getResult()))
+//            {
+//                success = true;
+//                mappingNode.setProperty(IDs::tuningRootNote, refNoteSld->getValue(), nullptr);
+//                mappingNode.setProperty(IDs::tuningRootFreq, refFreqEditor->getText().getDoubleValue(), nullptr);
+//                mappingNode.setProperty(IDs::kbmFileLocation, chooser.getResult().getParentDirectory().getFullPathName(), nullptr);
+//            }
+//        }
 
         if (!success)
         {
-            AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, "File Write Error", "Could not write .kbm file", "Ok", this);
+//            AlertWindow::showMessageBox(AlertWindow::AlertIconType::WarningIcon, "File Write Error", "Could not write .kbm file", "Ok", this);
         }
 
         delete getParentComponent();

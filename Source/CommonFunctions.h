@@ -9,6 +9,10 @@
 */
 
 #pragma once
+// KJSL sorry quick hack
+#ifndef JUCE_MODAL_LOOPS_PERMITTED
+#define JUCE_MODAL_LOOPS_PERMITTED 1
+#endif
 #include <JuceHeader.h>
 #include "PluginIDs.h"
 #include "Structures/OwnedHashMap.h"

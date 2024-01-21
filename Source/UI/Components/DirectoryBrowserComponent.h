@@ -11,6 +11,10 @@
   ==============================================================================
 */
 
+// KJSL: sorry quick hack
+#undef JUCE_MODAL_LOOPS_PERMITTED
+#define JUCE_MODAL_LOOPS_PERMITTED 1
+
 #pragma once
 #include <JuceHeader.h>
 
@@ -51,11 +55,11 @@ public:
 
     void buttonClicked(Button* buttonThatWasClicked) override
     {
-        if (chooser.browseForDirectory())
-        {
-            editor->setText(chooser.getResult().getFullPathName(), false);
-            listeners.call(&DirectoryBrowserComponent::Listener::directoryChanged, this, chooser.getResult());
-        }
+//        if (chooser.browseForDirectory())
+//        {
+//            editor->setText(chooser.getResult().getFullPathName(), false);
+//            listeners.call(&DirectoryBrowserComponent::Listener::directoryChanged, this, chooser.getResult());
+//        }
     }
 
     void setText(String textIn)

@@ -8,6 +8,7 @@
   ==============================================================================
 */
 
+#define JUCE_MODAL_LOOPS_PERMITTED 1
 #include "PresetManager.h"
 
 SvkPresetManager::SvkPresetManager(ValueTree pluginSettingsNodeIn)
