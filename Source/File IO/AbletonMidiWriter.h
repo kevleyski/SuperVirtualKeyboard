@@ -8,10 +8,6 @@
   ==============================================================================
 */
 
-// KJSL: sorry quick hack
-#undef JUCE_MODAL_LOOPS_PERMITTED
-#define JUCE_MODAL_LOOPS_PERMITTED 1
-
 #pragma once
 #include "../Structures/Mode.h"
 

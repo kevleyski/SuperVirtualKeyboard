@@ -580,11 +580,15 @@ void PluginControlComponent::buttonClicked (Button* buttonThatWasClicked)
     }
     else if (buttonThatWasClicked == saveButton.get())
     {
+#if JUCE_MODAL_LOOPS_PERMITTED
         saveMenu->showAt(saveButton.get());
+#endif
     }
     else if (buttonThatWasClicked == openButton.get())
     {
+#if JUCE_MODAL_LOOPS_PERMITTED
         loadMenu->showAt(openButton.get());
+#endif
     }
     else if (buttonThatWasClicked == settingsButton.get())
     {
@@ -1055,7 +1059,10 @@ void PluginControlComponent::exportKbmMapping()
     options.content->setSize(316, 112);
 
     if (JUCEApplication::isStandaloneApp())
+#if JUCE_MODAL_LOOPS_PERMITTED
         options.runModal();
+#endif
+    ;
     else
         options.launchAsync();
 }

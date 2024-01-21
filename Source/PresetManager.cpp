@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-#define JUCE_MODAL_LOOPS_PERMITTED 1
 #include "PresetManager.h"
 
 SvkPresetManager::SvkPresetManager(ValueTree pluginSettingsNodeIn)
@@ -288,20 +287,25 @@ bool SvkPresetManager::saveNodeToFile(ValueTree nodeToSave, String saveMsg, Stri
     
     if (fileOut.isDirectory())
     {
+#if JUCE_MODAL_LOOPS_PERMITTED
         FileChooser chooser(saveMsg,
             fileOut, fileEnding);
 
         chooser.browseForFileToSave(true);
         fileOut = chooser.getResult();
+#endif
     }
     else if (!fileOut.exists())
     {
+#if JUCE_MODAL_LOOPS_PERMITTED
+
         FileChooser chooser(saveMsg,
             File::getSpecialLocation(File::SpecialLocationType::userDocumentsDirectory),
             fileEnding);
         
         chooser.browseForFileToSave(true);
         fileOut = chooser.getResult();
+#endif
     }
 
     if (fileOut.getParentDirectory().exists())
@@ -360,7 +364,7 @@ ValueTree SvkPresetManager::nodeFromFile(String openMsg, String fileEnding, Stri
         else
             chooser.reset(new FileChooser(openMsg, File::getSpecialLocation(File::userDocumentsDirectory), fileEnding));
 
-        chooser->browseForFileToOpen();
+//        chooser->browseForFileToOpen();
         fileIn = chooser->getResult();
     }
 

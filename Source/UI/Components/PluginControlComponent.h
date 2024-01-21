@@ -10,10 +10,6 @@
 
 #pragma once
 
-// KJSL: sorry quick hack
-#undef JUCE_MODAL_LOOPS_PERMITTED
-#define JUCE_MODAL_LOOPS_PERMITTED 1
-
 #include "../JuceLibraryCode/JuceHeader.h"
 
 #include "../../PluginState.h"

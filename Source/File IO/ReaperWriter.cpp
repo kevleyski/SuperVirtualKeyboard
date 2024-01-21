@@ -8,7 +8,6 @@
   ==============================================================================
 */
 
-#define JUCE_MODAL_LOOPS_PERMITTED  1
 #include "ReaperWriter.h"
 
 ReaperWriter::ReaperWriter(Mode* modeIn)
@@ -29,10 +28,13 @@ ReaperWriter::ReaperWriter(Mode* modeIn)
     if (!filePath.isDirectory())
        filePath = File::getSpecialLocation(File::userDocumentsDirectory);
 
+#if JUCE_MODAL_LOOPS_PERMITTED
+
     FileChooser chooser("Save as", filePath, "*.txt");
     chooser.browseForFileToSave(true);
     fileOut = chooser.getResult();
-
+#endif
+    
     setup_default_symbols();
 }
 

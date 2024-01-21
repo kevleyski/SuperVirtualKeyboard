@@ -10,10 +10,6 @@
 
 #pragma once
 
-// KJSL: sorry quick hack
-#undef JUCE_MODAL_LOOPS_PERMITTED
-#define JUCE_MODAL_LOOPS_PERMITTED 1
-
 #include <JuceHeader.h>
 #include "../Components/LabelledComponent.h"
 #include "../../File IO/KbmWriter.h"
